@@ -41,9 +41,9 @@ PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
     IZIN=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
-    Bloman
+    BURIQ
     else
-    res="Permission Denied!"
+    BURIQ
     fi
     BURIQ
 }
