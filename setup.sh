@@ -165,7 +165,7 @@ exit 0
 elif [ "$res" = "Permission Accepted..." ]; then
 green "Permission Accepted!"
 else
-red "Permission Denied!"
+red "Permission Denied!lah"
 rm setup.sh > /dev/null 2>&1
 sleep 10
 exit 0
