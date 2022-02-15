@@ -28,7 +28,7 @@ chmod 644 /root/.profile
 echo -e "[ ${green}INFO${NC} ] Preparing the install file"
 apt install git curl -y >/dev/null 2>&1
 #echo e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
-3sleep 2
+Sleep 2
 #echo -ne "[ ${green}INFO${NC} ] Check permission : "
 
 #ERMISSION
