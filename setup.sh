@@ -22,7 +22,7 @@ BURIQ () {
 }
 # https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS ipv4.icanhazip.com)
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -39,7 +39,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS ipv4.icanhazip.com)
     if [ "$MYIP" = "$IZIN" ]; then
     BURIQ
     else
@@ -83,40 +83,40 @@ echo -e "[ ${tyblue}NOTES${NC} ] I need check your headers first.."
 sleep 2
 echo -e "[ ${green}INFO${NC} ] Checking headers"
 sleep 1
-totet=`uname -r`
-REQUIRED_PKG="linux-headers-$totet"
-PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
-echo Checking for $REQUIRED_PKG: $PKG_OK
-if [ "" = "$PKG_OK" ]; then
-  sleep 2
-  echo -e "[ ${yell}WARNING${NC} ] Try to install ...."
-  echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
-  apt-get --yes install $REQUIRED_PKG
-  sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] If error you need.. to do this"
-  sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 1. apt update -y"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 2. apt upgrade -y"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 3. apt dist-upgrade -y"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] 4. reboot"
-  sleep 1
-  echo ""
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] After rebooting"
-  sleep 1
-  echo -e "[ ${tyblue}NOTES${NC} ] Then run this script again"
-  echo -e "[ ${tyblue}NOTES${NC} ] if you understand then tap enter now"
-  read
-else
-  echo -e "[ ${green}INFO${NC} ] Oke installed"
-fi
+#totet=`uname -r`
+#REQUIRED_PKG="linux-headers-$totet"
+#PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+#echo Checking for $REQUIRED_PKG: $PKG_OK
+#if [ "" = "$PKG_OK" ]; then
+ # sleep 2
+ # echo -e "[ ${yell}WARNING${NC} ] Try to install ...."
+  #echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
+  #apt-get --yes install $REQUIRED_PKG
+ # sleep 1
+ # echo ""
+ # sleep 1
+  #echo -e "[ ${tyblue}NOTES${NC} ] If error you need.. to do this"
+  #sleep 1
+  #echo ""
+  #sleep 1
+  #echo -e "[ ${tyblue}NOTES${NC} ] 1. apt update -y"
+  #sleep 1
+  #echo -e "[ ${tyblue}NOTES${NC} ] 2. apt upgrade -y"
+  #sleep 1
+  #echo -e "[ ${tyblue}NOTES${NC} ] 3. apt dist-upgrade -y"
+  #3sleep 1
+  #cho -e "[ ${tyblue}NOTES${NC} ] 4. reboot"
+  #sleep 1
+  #echo ""
+  #sleep 1
+ # 3echo -e "[ ${tyblue}NOTES${NC} ] After rebooting"
+  #sleep 1
+  #echo -e "[ ${tyblue}NOTES${NC} ] Then run this script again"
+  #echo -e "[ ${tyblue}NOTES${NC} ] if you understand then tap enter now"
+#  #read
+3else
+ # echo -e "[ ${green}INFO${NC} ] Oke installed"
+#fi
 
 ttet=`uname -r`
 ReqPKG="linux-headers-$ttet"
@@ -154,22 +154,22 @@ chmod 644 /root/.profile
 
 echo -e "[ ${green}INFO${NC} ] Preparing the install file"
 apt install git curl -y >/dev/null 2>&1
-echo -e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
-sleep 2
-echo -ne "[ ${green}INFO${NC} ] Check permission : "
+#echo e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
+3sleep 2
+#echo -ne "[ ${green}INFO${NC} ] Check permission : "
 
-PERMISSION
-if [ -f /home/needupdate ]; then
-red "Your script need to update first !"
-exit 0
-elif [ "$res" = "Permission Accepted..." ]; then
-green "Permission Accepted!"
-else
-green "Permission Accepted!"
+#ERMISSION
+#if [ -f /home/needupdate ]; then
+#red "Your script need to update first !"
+#3exit 0
+#elif [ "$res" = "Permission Accepted..." ]; then
+#green "Permission Accepted!"
+#else
+#green "Permission Accepted!"
 #rm setup.sh > /dev/null 2>&1
-sleep 10
+#sleep 10
 #exit 0
-fi
+#fi
 
 sleep 3
 
