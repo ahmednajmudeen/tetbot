@@ -114,18 +114,13 @@ sleep 1
   #echo -e "[ ${tyblue}NOTES${NC} ] Then run this script again"
   #echo -e "[ ${tyblue}NOTES${NC} ] if you understand then tap enter now"
 #  #read
-3else
+#else
  # echo -e "[ ${green}INFO${NC} ] Oke installed"
 #fi
 
 ttet=`uname -r`
 ReqPKG="linux-headers-$ttet"
-if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
-  rm /root/setup.sh >/dev/null 2>&1 
-  exit
-else
-  clear
-fi
+
 
 
 secs_to_human() {
