@@ -1,4 +1,131 @@
 #!/bin/bash
+dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Date | sed -e 's/< Date: //')
+biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
+#########################
+
+BURIQ () {
+    curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk > /root/tmp
+    data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
+    for user in "${data[@]}"
+    do
+    exp=( `grep -E "^### $user" "/root/tmp" | awk '{print $3}'` )
+    d1=(`date -d "$exp" +%s`)
+    d2=(`date -d "$biji" +%s`)
+    exp2=$(( (d1 - d2) / 86400 ))
+    if [[ "$exp2" -le "0" ]]; then
+    echo $user > /etc/.$user.ini
+    else
+    rm -f  /etc/.$user.ini > /dev/null 2>&1
+    fi
+    done
+    rm -f  /root/tmp
+}
+# https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk 
+MYIP=$(curl -sS ipv4.icanhazip.com)
+Name=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | grep $MYIP | awk '{print $2}')
+echo $Name > /usr/local/etc/.$Name.ini
+CekOne=$(cat /usr/local/etc/.$Name.ini)
+
+Bloman () {
+if [ -f "/etc/.$Name.ini" ]; then
+CekTwo=$(cat /etc/.$Name.ini)
+    if [ "$CekOne" = "$CekTwo" ]; then
+        res="Expired"
+    fi
+else
+res="Permission Accepted..."
+fi
+}
+
+PERMISSION () {
+    MYIP=$(curl -sS ipv4.icanhazip.com)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | awk '{print $4}' | grep $MYIP)
+    if [ "$MYIP" = "$IZIN" ]; then
+    Bloman
+    else
+    res="Permission Denied!"
+    fi
+    BURIQ
+}
+
+clear
+red='\e[1;31m'
+green='\e[0;32m'
+yell='\e[1;33m'
+tyblue='\e[1;36m'
+NC='\e[0m'
+purple() { echo -e "\\033[35;1m${*}\\033[0m"; }
+tyblue() { echo -e "\\033[36;1m${*}\\033[0m"; }
+yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+cd /root
+#System version number
+if [ "${EUID}" -ne 0 ]; then
+		echo "You need to run this script as root"
+		exit 1
+fi
+if [ "$(systemd-detect-virt)" == "openvz" ]; then
+		echo "OpenVZ is not supported"
+		exit 1
+fi
+
+localip=$(hostname -I | cut -d\  -f1)
+hst=( `hostname` )
+dart=$(cat /etc/hosts | grep -w `hostname` | awk '{print $2}')
+if [[ "$hst" != "$dart" ]]; then
+echo "$localip $(hostname)" >> /etc/hosts
+fi
+
+echo -e "[ ${tyblue}NOTES${NC} ] Before we go.. "
+sleep 1
+echo -e "[ ${tyblue}NOTES${NC} ] I need check your headers first.."
+sleep 2
+echo -e "[ ${green}INFO${NC} ] Checking headers"
+sleep 1
+totet=`uname -r`
+REQUIRED_PKG="linux-headers-$totet"
+PKG_OK=$(dpkg-query -W --showformat='${Status}\n' $REQUIRED_PKG|grep "install ok installed")
+echo Checking for $REQUIRED_PKG: $PKG_OK
+if [ "" = "$PKG_OK" ]; then
+  sleep 2
+  echo -e "[ ${yell}WARNING${NC} ] Try to install ...."
+  echo "No $REQUIRED_PKG. Setting up $REQUIRED_PKG."
+  apt-get --yes install $REQUIRED_PKG
+  sleep 1
+  echo ""
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] If error you need.. to do this"
+  sleep 1
+  echo ""
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] 1. apt update -y"
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] 2. apt upgrade -y"
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] 3. apt dist-upgrade -y"
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] 4. reboot"
+  sleep 1
+  echo ""
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] After rebooting"
+  sleep 1
+  echo -e "[ ${tyblue}NOTES${NC} ] Then run this script again"
+  echo -e "[ ${tyblue}NOTES${NC} ] if you understand then tap enter now"
+  read
+else
+  echo -e "[ ${green}INFO${NC} ] Oke installed"
+fi
+
+ttet=`uname -r`
+ReqPKG="linux-headers-$ttet"
+if ! dpkg -s $ReqPKG  >/dev/null 2>&1; then
+  rm /root/setup.sh >/dev/null 2>&1 
+  exit
+else
+  clear
+fi
 
 
 secs_to_human() {
@@ -27,22 +154,22 @@ chmod 644 /root/.profile
 
 echo -e "[ ${green}INFO${NC} ] Preparing the install file"
 apt install git curl -y >/dev/null 2>&1
-#echo e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
-Sleep 2
-#echo -ne "[ ${green}INFO${NC} ] Check permission : "
+echo -e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
+sleep 2
+echo -ne "[ ${green}INFO${NC} ] Check permission : "
 
-#ERMISSION
-#if [ -f /home/needupdate ]; then
-#red "Your script need to update first !"
-#3exit 0
-#elif [ "$res" = "Permission Accepted..." ]; then
-#green "Permission Accepted!"
-#else
-#green "Permission Accepted!"
-#rm setup.sh > /dev/null 2>&1
-#sleep 10
-#exit 0
-#fi
+PERMISSION
+if [ -f /home/needupdate ]; then
+red "Your script need to update first !"
+exit 0
+elif [ "$res" = "Permission Accepted..." ]; then
+green "Permission Accepted!"
+else
+red "Permission Denied!"
+rm setup.sh > /dev/null 2>&1
+sleep 10
+exit 0
+fi
 
 sleep 3
 
@@ -91,7 +218,7 @@ fi
 fi
 
 echo ""
-wget -q https://raw.githubusercontent.com/scvps/scriptvps/main/dependencies
+wget -q https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dependencies
 chmod +x dependencies 
 screen -S depen ./dependencies
 rm dependencies
@@ -124,7 +251,7 @@ read answer
             else
                 echo "peler=$pp" > /root/scdomain
             fi
-        wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/cf.sh" && chmod +x cf.sh && ./cf.sh
+        wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/cf.sh" && chmod +x cf.sh && ./cf.sh
     fi
 else
 clear
@@ -142,57 +269,57 @@ read -rp "Input ur domain : " -e pp
     else
         echo "peler=$pp" > /root/scdomain
     fi
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/cf.sh" && chmod +x cf.sh && ./cf.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/cf.sh" && chmod +x cf.sh && ./cf.sh
 fi
 
-wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/scvps/scriptvps/main/newmenu.sh" && chmod +x /usr/bin/menu
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/ssh/ssh-vpn.sh" && chmod +x ssh-vpn.sh && screen -S sshvpn ./ssh-vpn.sh
+wget -q -O /usr/bin/menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/newmenu.sh" && chmod +x /usr/bin/menu
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/ssh/ssh-vpn.sh" && chmod +x ssh-vpn.sh && screen -S sshvpn ./ssh-vpn.sh
 if [ "$coreselect" = "v2ray" ]; then
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/v2ray/ins-vt.sh" && chmod +x ins-vt.sh && screen -S insvt ./ins-vt.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/v2ray/ins-vt.sh" && chmod +x ins-vt.sh && screen -S insvt ./ins-vt.sh
 elif [ "$coreselect" = "xray" ]; then
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/ins-xray.sh" && chmod +x ins-xray.sh && screen -S insxray ./ins-xray.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/ins-xray.sh" && chmod +x ins-xray.sh && screen -S insxray ./ins-xray.sh
 fi
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/wireguard/wg.sh" && chmod +x wg.sh && screen -S wg ./wg.sh
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/sstp/sstp.sh" && chmod +x sstp.sh && screen -S sstp ./sstp.sh
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/ipsec/ipsec.sh" && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/ss.sh" && chmod +x ss.sh && screen -S ss ./ss.sh
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/ssr.sh" && chmod +x ssr.sh && screen -S ssr ./ssr.sh
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/system/set-br.sh" && chmod +x set-br.sh && screen -S sbr ./set-br.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/wireguard/wg.sh" && chmod +x wg.sh && screen -S wg ./wg.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sstp/sstp.sh" && chmod +x sstp.sh && screen -S sstp ./sstp.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/ipsec/ipsec.sh" && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/ss.sh" && chmod +x ss.sh && screen -S ss ./ss.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/ssr.sh" && chmod +x ssr.sh && screen -S ssr ./ssr.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/system/set-br.sh" && chmod +x set-br.sh && screen -S sbr ./set-br.sh
 #extension
 clear
 sleep 1
 echo -e "[ ${green}INFO${NC} ] Downloading extension !!"
 sleep 1
-wget -q -O /usr/bin/xtls "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/xtls.sh" && chmod +x /usr/bin/xtls && xtls && rm -f /usr/bin/xtls
-wget -q -O /usr/bin/setting-menu "https://raw.githubusercontent.com/scvps/scriptvps/main/menu_all/setting-menu.sh" && chmod +x /usr/bin/setting-menu
-wget -q -O /usr/bin/autokill-menu "https://raw.githubusercontent.com/scvps/scriptvps/main/menu_all/autokill-menu.sh" && chmod +x /usr/bin/autokill-menu
-wget -q -O /usr/bin/info-menu "https://raw.githubusercontent.com/scvps/scriptvps/main/menu_all/info-menu.sh" && chmod +x /usr/bin/info-menu
-wget -q -O /usr/bin/system-menu "https://raw.githubusercontent.com/scvps/scriptvps/main/menu_all/system-menu.sh" && chmod +x /usr/bin/system-menu
-wget -q -O /usr/bin/trial-menu "https://raw.githubusercontent.com/scvps/scriptvps/main/menu_all/trial-menu.sh" && chmod +x /usr/bin/trial-menu
+wget -q -O /usr/bin/xtls "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/xtls.sh" && chmod +x /usr/bin/xtls && xtls && rm -f /usr/bin/xtls
+wget -q -O /usr/bin/setting-menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/menu_all/setting-menu.sh" && chmod +x /usr/bin/setting-menu
+wget -q -O /usr/bin/autokill-menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/menu_all/autokill-menu.sh" && chmod +x /usr/bin/autokill-menu
+wget -q -O /usr/bin/info-menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/menu_all/info-menu.sh" && chmod +x /usr/bin/info-menu
+wget -q -O /usr/bin/system-menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/menu_all/system-menu.sh" && chmod +x /usr/bin/system-menu
+wget -q -O /usr/bin/trial-menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/menu_all/trial-menu.sh" && chmod +x /usr/bin/trial-menu
 
 
-wget -q -O /usr/bin/kill-by-user "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/kill-by-user.sh" && chmod +x /usr/bin/kill-by-user
-wget -q -O /usr/bin/importantfile "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/toolkit.sh" && chmod +x /usr/bin/importantfile
-wget -q -O /usr/bin/status "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/status.sh" && chmod +x /usr/bin/status
-wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/autoreboot.sh" && chmod +x /usr/bin/autoreboot
-wget -q -O /usr/bin/limit-speed "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/limit-speed.sh" && chmod +x /usr/bin/limit-speed
-wget -q -O /usr/bin/add-host "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/add-host.sh" && chmod +x /usr/bin/add-host
-wget -q -O /usr/bin/akill-ws "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/akill-ws.sh" && chmod +x /usr/bin/akill-ws
-wget -q -O /usr/bin/autokill-ws "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/autokill-ws.sh" && chmod +x /usr/bin/autokill-ws
-wget -q -O /usr/bin/restart-service "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/restart-service.sh" && chmod +x /usr/bin/restart-service
+wget -q -O /usr/bin/kill-by-user "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/kill-by-user.sh" && chmod +x /usr/bin/kill-by-user
+wget -q -O /usr/bin/importantfile "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/toolkit.sh" && chmod +x /usr/bin/importantfile
+wget -q -O /usr/bin/status "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/status.sh" && chmod +x /usr/bin/status
+wget -q -O /usr/bin/autoreboot "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/autoreboot.sh" && chmod +x /usr/bin/autoreboot
+wget -q -O /usr/bin/limit-speed "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/limit-speed.sh" && chmod +x /usr/bin/limit-speed
+wget -q -O /usr/bin/add-host "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/add-host.sh" && chmod +x /usr/bin/add-host
+wget -q -O /usr/bin/akill-ws "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/akill-ws.sh" && chmod +x /usr/bin/akill-ws
+wget -q -O /usr/bin/autokill-ws "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/autokill-ws.sh" && chmod +x /usr/bin/autokill-ws
+wget -q -O /usr/bin/restart-service "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/restart-service.sh" && chmod +x /usr/bin/restart-service
  
-wget -q -O /usr/bin/installbot "https://raw.githubusercontent.com/scvps/scriptvps/main/bot_panel/installer.sh" && chmod +x /usr/bin/installbot
-wget -q -O /usr/bin/bbt "https://raw.githubusercontent.com/scvps/scriptvps/main/bot_panel/bbt.sh" && chmod +x /usr/bin/bbt
+wget -q -O /usr/bin/installbot "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/bot_panel/installer.sh" && chmod +x /usr/bin/installbot
+wget -q -O /usr/bin/bbt "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/bot_panel/bbt.sh" && chmod +x /usr/bin/bbt
 
 sleep 2
 echo -e "[ ${green}INFO${NC} ] Installing Successfully!!"
 sleep 1
 echo -e "[ ${green}INFO${NC} ] Dont forget to reboot later"
 #=======[ end ] ======
-wget -q -O /usr/bin/xp https://raw.githubusercontent.com/scvps/scriptvps/main/dll/xp.sh && chmod +x /usr/bin/xp
-wget -q -O /usr/bin/info https://raw.githubusercontent.com/scvps/scriptvps/main/dll/info.sh && chmod +x /usr/bin/info
+wget -q -O /usr/bin/xp https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/xp.sh && chmod +x /usr/bin/xp
+wget -q -O /usr/bin/info https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/info.sh && chmod +x /usr/bin/info
 
-wget -q -O /usr/bin/.ascii-home "https://raw.githubusercontent.com/scvps/scriptvps/main/resources/ascii-home"
+wget -q -O /usr/bin/.ascii-home "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/resources/ascii-home"
 cat> /root/.profile << END
 # ~/.profile: executed by Bourne-compatible login shells.
 
