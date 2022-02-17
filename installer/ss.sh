@@ -5,7 +5,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk > /root/tmp
+    curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -23,7 +23,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -40,7 +40,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -191,12 +191,12 @@ sudo iptables -I INPUT -m state --state NEW -m udp -p udp --dport 2443:3543 -j A
 sudo iptables-save > /etc/iptables.up.rules
 sudo ip6tables-save > /etc/ip6tables.up.rules
 
-wget -q -O /usr/bin/add-ss "https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/add-ss.sh" && chmod +x /usr/bin/add-ss
-wget -q -O /usr/bin/del-ss "https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/del-ss.sh" && chmod +x /usr/bin/del-ss
-wget -q -O /usr/bin/cek-ss "https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/cek-ss.sh" && chmod +x /usr/bin/cek-ss
-wget -q -O /usr/bin/renew-ss "https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/renew-ss.sh" && chmod +x /usr/bin/renew-ss
-wget -q -O /usr/bin/trial-ss "https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/trial-ss.sh" && chmod +x /usr/bin/trial-ss
-wget -q -O /usr/bin/ss-menu "https://raw.githubusercontent.com/scvps/scriptvps/main/menu_all/ss-menu.sh" && chmod +x /usr/bin/ss-menu
+wget -q -O /usr/bin/add-ss "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/add-ss.sh" && chmod +x /usr/bin/add-ss
+wget -q -O /usr/bin/del-ss "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/del-ss.sh" && chmod +x /usr/bin/del-ss
+wget -q -O /usr/bin/cek-ss "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/cek-ss.sh" && chmod +x /usr/bin/cek-ss
+wget -q -O /usr/bin/renew-ss "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/renew-ss.sh" && chmod +x /usr/bin/renew-ss
+wget -q -O /usr/bin/trial-ss "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/trial-ss.sh" && chmod +x /usr/bin/trial-ss
+wget -q -O /usr/bin/ss-menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/menu_all/ss-menu.sh" && chmod +x /usr/bin/ss-menu
 
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
