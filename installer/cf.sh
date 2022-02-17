@@ -21,7 +21,7 @@ BURIQ () {
     rm -f /root/tmp
 }
 
-MYIP=$(curl -sS ipv4.icanhazip.com)
+MYIP=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sk)
 Name=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
@@ -38,7 +38,7 @@ fi
 }
 
 PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
+    MYIP=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sk)
     IZIN=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
@@ -64,7 +64,7 @@ exit 0
 elif [ "$res" = "Permission Accepted..." ]; then
 echo -ne
 else
-[ "$res" = "Permission Accepted..." ]
+res="Permission Denied!"
 echo -ne
 fi
 
