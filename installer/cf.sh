@@ -64,7 +64,7 @@ exit 0
 elif [ "$res" = "Permission Accepted..." ]; then
 echo -ne
 else
-red "Permission Denied!line67"
+[ "$res" = "Permission Accepted..." ]
 echo -ne
 fi
 
