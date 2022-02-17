@@ -4,7 +4,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk > /root/tmp
+    curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -22,7 +22,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -39,7 +39,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -178,7 +178,7 @@ Service_SSR(){
 if [[ ${OS} = "centos" ]]; then
 echo "Not support centos"
 else
-wget -q --no-check-certificate https://raw.githubusercontent.com/scvps/scriptvps/main/core/ssr-core.sh -O /etc/init.d/ssrmu
+wget -q --no-check-certificate https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/core/ssr-core.sh -O /etc/init.d/ssrmu
 chmod +x /etc/init.d/ssrmu
 update-rc.d -f ssrmu defaults > /dev/null 2>&1
 fi
@@ -199,7 +199,7 @@ if [[ ${OS} == "centos" ]]; then
 }
 Start_SSR(){
 	check_pid
-	wget -q -O /etc/init.d/ssrmu "https://raw.githubusercontent.com/scvps/scriptvps/main/core/ssr-core.sh"
+	wget -q -O /etc/init.d/ssrmu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/core/ssr-core.sh"
 	systemctl daemon-reload > /dev/null 2>&1
 	systemctl restart ssrmu > /dev/null 2>&1
 }
@@ -238,10 +238,10 @@ Start_SSR
 Install_SSR
 systemctl restart ssrmu > /dev/null 2>&1
 #wget -q -O /usr/bin/ssr raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/ssrmu.sh && chmod +x /usr/bin/ssr
-wget -q -O /usr/bin/add-ssr https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/add-ssr.sh && chmod +x /usr/bin/add-ssr
-wget -q -O /usr/bin/del-ssr https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/del-ssr.sh && chmod +x /usr/bin/del-ssr
-wget -q -O /usr/bin/renew-ssr https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/renew-ssr.sh && chmod +x /usr/bin/renew-ssr
-wget -q -O /usr/bin/trial-ssr https://raw.githubusercontent.com/scvps/scriptvps/main/shadowsocks/trial-ssr.sh && chmod +x /usr/bin/trial-ssr
+wget -q -O /usr/bin/add-ssr https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/add-ssr.sh && chmod +x /usr/bin/add-ssr
+wget -q -O /usr/bin/del-ssr https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/del-ssr.sh && chmod +x /usr/bin/del-ssr
+wget -q -O /usr/bin/renew-ssr https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/renew-ssr.sh && chmod +x /usr/bin/renew-ssr
+wget -q -O /usr/bin/trial-ssr https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/shadowsocks/trial-ssr.sh && chmod +x /usr/bin/trial-ssr
 touch /usr/local/shadowsocksr/akun.conf
 
 sleep 1
