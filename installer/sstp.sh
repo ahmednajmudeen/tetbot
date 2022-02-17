@@ -4,7 +4,7 @@ biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 
 BURIQ () {
-    curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk > /root/tmp
+    curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk > /root/tmp
     data=( `cat /root/tmp | grep -E "^### " | awk '{print $2}'` )
     for user in "${data[@]}"
     do
@@ -22,7 +22,7 @@ BURIQ () {
 }
 
 MYIP=$(curl -sS ipv4.icanhazip.com)
-Name=$(curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk | grep $MYIP | awk '{print $2}')
+Name=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
 
@@ -39,7 +39,7 @@ fi
 
 PERMISSION () {
     MYIP=$(curl -sS ipv4.icanhazip.com)
-    IZIN=$(curl -sS https://raw.githubusercontent.com/tesbot07/tesbot07/main/skkkk | awk '{print $4}' | grep $MYIP)
+    IZIN=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
@@ -123,7 +123,7 @@ fi
 sleep 1
 echo -e "[ ${green}INFO${NC} ] Setting config... "
 mv /etc/accel-ppp.conf.dist /etc/accel-ppp.conf > /dev/null 2>&1
-curl -sS "https://raw.githubusercontent.com/scvps/scriptvps/main/sstp/accel.conf" | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/accel-ppp.conf
+curl -sS "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sstp/accel.conf" | openssl aes-256-cbc -d -a -pass pass:scvps07gg -pbkdf2 > /etc/accel-ppp.conf
 sed -i $MYIP2 /etc/accel-ppp.conf
 chmod +x /etc/accel-ppp.conf
 sleep 1
@@ -153,13 +153,13 @@ echo -e "[ ${green}INFO${NC} ] Reload netfilter... "
 sudo netfilter-persistent save > /dev/null 2>&1
 sudo netfilter-persistent reload > /dev/null 2>&1
 #input perintah sstp
-wget -q -O /usr/bin/add-sstp "https://raw.githubusercontent.com/scvps/scriptvps/main/sstp/add-sstp.sh" && chmod +x /usr/bin/add-sstp
-wget -q -O /usr/bin/del-sstp "https://raw.githubusercontent.com/scvps/scriptvps/main/sstp/del-sstp.sh" && chmod +x /usr/bin/del-sstp
-wget -q -O /usr/bin/cek-sstp "https://raw.githubusercontent.com/scvps/scriptvps/main/sstp/cek-sstp.sh" && chmod +x /usr/bin/cek-sstp
-wget -q -O /usr/bin/renew-sstp "https://raw.githubusercontent.com/scvps/scriptvps/main/sstp/renew-sstp.sh" && chmod +x /usr/bin/renew-sstp
-wget -q -O /usr/bin/trial-sstp "https://raw.githubusercontent.com/scvps/scriptvps/main/sstp/trial-sstp.sh" && chmod +x /usr/bin/trial-sstp
-wget -q -O /usr/bin/port-sstp "https://raw.githubusercontent.com/scvps/scriptvps/main/sstp/port-sstp.sh" && chmod +x /usr/bin/port-sstp
-wget -q -O /usr/bin/sstp-menu "https://raw.githubusercontent.com/scvps/scriptvps/main/menu_all/sstp-menu.sh" && chmod +x /usr/bin/sstp-menu
+wget -q -O /usr/bin/add-sstp "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sstp/add-sstp.sh" && chmod +x /usr/bin/add-sstp
+wget -q -O /usr/bin/del-sstp "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sstp/del-sstp.sh" && chmod +x /usr/bin/del-sstp
+wget -q -O /usr/bin/cek-sstp "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sstp/cek-sstp.sh" && chmod +x /usr/bin/cek-sstp
+wget -q -O /usr/bin/renew-sstp "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sstp/renew-sstp.sh" && chmod +x /usr/bin/renew-sstp
+wget -q -O /usr/bin/trial-sstp "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sstp/trial-sstp.sh" && chmod +x /usr/bin/trial-sstp
+wget -q -O /usr/bin/port-sstp "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sstp/port-sstp.sh" && chmod +x /usr/bin/port-sstp
+wget -q -O /usr/bin/sstp-menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/menu_all/sstp-menu.sh" && chmod +x /usr/bin/sstp-menu
 
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
