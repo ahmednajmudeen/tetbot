@@ -64,9 +64,10 @@ exit 0
 elif [ "$res" = "Permission Accepted..." ]; then
 echo -ne
 else
-res="Permission Denied!"
-echo -ne
+red "Permission Denied!"
+exit 0
 fi
+
 
 source /root/scdomain
 SUB_DOMAIN=$peler
