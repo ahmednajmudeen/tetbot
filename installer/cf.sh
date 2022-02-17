@@ -43,7 +43,7 @@ PERMISSION () {
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
     else
-    res="Permission Denied!"
+    BURIQ res="Permission Denied!"
     fi
     BURIQ
 }
@@ -64,8 +64,8 @@ exit 0
 elif [ "$res" = "Permission Accepted..." ]; then
 echo -ne
 else
-red "Permission Denied!"
-exit 0
+red "Permission Denied!line67"
+echo -ne
 fi
 
 source /root/scdomain
