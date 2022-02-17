@@ -21,7 +21,7 @@ BURIQ () {
     rm -f /root/tmp
 }
 
-MYIP=$(curl -sS ipv4.icanhazip.com)
+MYIP=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sk)
 Name=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | grep $MYIP | awk '{print $2}')
 echo $Name > /usr/local/etc/.$Name.ini
 CekOne=$(cat /usr/local/etc/.$Name.ini)
@@ -38,7 +38,7 @@ fi
 }
 
 PERMISSION () {
-    MYIP=$(curl -sS ipv4.icanhazip.com)
+    MYIP=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/sk)
     IZIN=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/skkkk | awk '{print $4}' | grep $MYIP)
     if [ "$MYIP" = "$IZIN" ]; then
     Bloman
@@ -47,21 +47,7 @@ PERMISSION () {
     fi
     BURIQ
 }
-red='\e[1;31m'
-green='\e[0;32m'
-NC='\e[0m'
-green() { echo -e "\\033[32;1m${*}\\033[0m"; }
-red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-PERMISSION
-if [ -f /home/needupdate ]; then
-red "Your script need to update first !"
-exit 0
-elif [ "$res" = "Permission Accepted..." ]; then
-echo -ne
-else
-red "Permission Denied!"
-exit 0
-fi
+
 
 clear
 trgo="$(cat ~/log-install.txt | grep -w "Trojan Go" | cut -d: -f2|sed 's/ //g')"
