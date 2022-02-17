@@ -17,5 +17,5 @@
 # wget -q -O /usr/bin/autoreboot "https://scrzoke.000webhostapp.com/ssh/autoreboot.sh" && chmod +x /usr/bin/autoreboot
 # wget -q -O /usr/bin/autoscript "https://scrzoke.000webhostapp.com/ssh/autoscript.sh" && chmod +x /usr/bin/autoscript
 # wget -q -O /usr/bin/status "https://scrzoke.000webhostapp.com/ssh/status.sh" && chmod +x /usr/bin/status
-wget -q -O /usr/bin/add-host "https://raw.githubusercontent.com/scvps/scriptvps/main/ssh/add-host.sh" && chmod +x /usr/bin/add-host
-wget -q -O /usr/bin/about "https://raw.githubusercontent.com/scvps/scriptvps/main/ssh/about.sh" && chmod +x /usr/bin/about
+wget -q -O /usr/bin/add-host "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/ssh/add-host.sh" && chmod +x /usr/bin/add-host
+wget -q -O /usr/bin/about "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/ssh/about.sh" && chmod +x /usr/bin/about
