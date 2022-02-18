@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo " install v2ray-core"
 
 PROXY=''
 HELP=''
