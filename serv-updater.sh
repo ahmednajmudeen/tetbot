@@ -32,19 +32,7 @@ NameUser=$(curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main
 cekray=`cat /root/log-install.txt | grep -ow "XRAY" | sort | uniq`
 clear
 
-serverV=$( curl -sS https://raw.githubusercontent.com/scvps/perizinan/main/versi  )
-if [[  $(cat /opt/.ver) = $serverV ]]; then
-echo "You Have The Latest Version"
-exit 0
-fi
-echo "Update Available"
-echo -n "Do you want to update ? (y/n)? "
-read answer
-if [ "$answer" == "${answer#[Yy]}" ] ;then
-exit 0
-else
-clear
-fi
+
 systemctl stop cron > /dev/null 2>&1
 curl -sS https://raw.githubusercontent.com/scvps/scriptvps/main/resources/ascii-home
 echo
