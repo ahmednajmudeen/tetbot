@@ -9,7 +9,6 @@ NC='\e[0m'
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 
-
 clear
 echo -n > /tmp/other.txt
 data=( `cat /etc/v2ray/config.json | grep '^#&' | cut -d ' ' -f 2 | sort | uniq`);

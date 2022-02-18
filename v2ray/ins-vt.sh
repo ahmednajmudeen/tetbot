@@ -3,18 +3,20 @@ dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Dat
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 
+
 clear
 red='\e[1;31m'
 green='\e[0;32m'
 yell='\e[1;33m'
 NC='\e[0m'
-curl -sS https://raw.githubusercontent.com/scvps/scriptvps/main/resources/ascii-home
+curl -sS https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/resources/ascii-home
 echo "V2Ray Core Vmess / Vless"
 echo "Trojan / Trojan Go"
 echo "Progress..."
 sleep 3
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+
 echo -e "
 "
 date
@@ -47,11 +49,11 @@ touch /etc/trojan-go/akun.conf >/dev/null 2>&1
 # install v2ray
 sleep 1
 echo -e "[ ${green}INFO$NC ] Downloading & Installing v2ray core"
-wget -q -c "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/core/v2ray-core.sh" && chmod +x v2ray-core.sh && ./v2ray-core.sh >/dev/null 2>&1
+wget -q -c "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/core/v2ray-core.sh" && chmod +x v2ray-core.sh && ./v2ray-core.sh >/dev/null 2>&1
 rm -f v2ray-core.sh
 sleep 1
 echo -e "[ ${green}INFO$NC ] Downloading & Installing Trojan-Go"
-wget -q -c "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/trojan/ins-trojango.sh" && chmod +x ins-trojango.sh && ./ins-trojango.sh >/dev/null 2>&1
+wget -q -c "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/trojan/ins-trojango.sh" && chmod +x ins-trojango.sh && ./ins-trojango.sh >/dev/null 2>&1
 rm -f /root/ins-trojango.sh
 mkdir -p /root/.acme.sh >/dev/null 2>&1
 sleep 1

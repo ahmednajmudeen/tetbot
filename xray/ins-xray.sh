@@ -3,19 +3,11 @@ dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Dat
 biji=`date +"%Y-%m-%d" -d "$dateFromServer"`
 #########################
 
-clear
 red='\e[1;31m'
 green='\e[0;32m'
-yell='\e[1;33m'
 NC='\e[0m'
-curl -sS https://raw.githubusercontent.com/scvps/scriptvps/main/resources/ascii-home
-echo "XRAY Core Vmess / Vless"
-echo "Trojan / Trojan Go"
-echo "Progress..."
-sleep 3
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }
-
 echo -e "
 "
 date
@@ -48,11 +40,11 @@ touch /etc/trojan-go/akun.conf >/dev/null 2>&1
 # install xray
 sleep 1
 echo -e "[ ${green}INFO$NC ] Downloading & Installing xray core"
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/core/xray-core.sh" && chmod +x xray-core.sh && ./xray-core.sh >/dev/null 2>&1
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/core/xray-core.sh" && chmod +x xray-core.sh && ./xray-core.sh >/dev/null 2>&1
 rm -f xray-core.sh
 sleep 1
 echo -e "[ ${green}INFO$NC ] Downloading & Installing Trojan-Go"
-wget -q "https://raw.githubusercontent.com/scvps/scriptvps/main/trojan/ins-trojango.sh" && chmod +x ins-trojango.sh && ./ins-trojango.sh
+wget -q "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/trojan/ins-trojango.sh" && chmod +x ins-trojango.sh && ./ins-trojango.sh
 rm -f /root/ins-trojango.sh
 mkdir -p /root/.acme.sh >/dev/null 2>&1
 sleep 1
@@ -593,7 +585,7 @@ EOF
 
 sleep 1
 echo -e "[ ${green}INFO$NC ] Installing bbr.."
-wget -q -O /usr/bin/bbr "https://raw.githubusercontent.com/scvps/scriptvps/main/dll/bbr.sh"
+wget -q -O /usr/bin/bbr "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/dll/bbr.sh"
 chmod +x /usr/bin/bbr
 bbr >/dev/null 2>&1
 rm /usr/bin/bbr >/dev/null 2>&1
@@ -632,36 +624,36 @@ systemctl restart trojan-go >/dev/null 2>&1
 
 sleep 1
 echo -e "[ ${green}ok${NC} ] Downloading files for trojan-go... "
-wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/add-ws.sh" && chmod +x /usr/bin/add-ws
-wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/add-vless.sh" && chmod +x /usr/bin/add-vless
-wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/add-tr.sh" && chmod +x /usr/bin/add-tr
-wget -q -O /usr/bin/del-ws "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/del-ws.sh" && chmod +x /usr/bin/del-ws
-wget -q -O /usr/bin/del-vless "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/del-vless.sh" && chmod +x /usr/bin/del-vless
-wget -q -O /usr/bin/del-tr "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/del-tr.sh" && chmod +x /usr/bin/del-tr
-wget -q -O /usr/bin/cek-ws "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/cek-ws.sh" && chmod +x /usr/bin/cek-ws
-wget -q -O /usr/bin/cek-vless "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/cek-vless.sh" && chmod +x /usr/bin/cek-vless
-wget -q -O /usr/bin/cek-tr "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/cek-tr.sh" && chmod +x /usr/bin/cek-tr
-wget -q -O /usr/bin/renew-ws "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/renew-ws.sh" && chmod +x /usr/bin/renew-ws
-wget -q -O /usr/bin/renew-vless "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/renew-vless.sh" && chmod +x /usr/bin/renew-vless
-wget -q -O /usr/bin/renew-tr "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/renew-tr.sh" && chmod +x /usr/bin/renew-tr
-wget -q -O /usr/bin/trial-ws "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/trial-ws.sh" && chmod +x /usr/bin/trial-ws
-wget -q -O /usr/bin/trial-vless "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/trial-vless.sh" && chmod +x /usr/bin/trial-vless
-wget -q -O /usr/bin/trial-tr "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/trial-tr.sh" && chmod +x /usr/bin/trial-tr
-wget -q -O /usr/bin/port-ws "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/port-ws.sh" && chmod +x /usr/bin/port-ws
-wget -q -O /usr/bin/port-vless "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/port-vless.sh" && chmod +x /usr/bin/port-vless
-wget -q -O /usr/bin/port-tr "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/port-tr.sh" && chmod +x /usr/bin/port-tr
+wget -q -O /usr/bin/add-ws "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/add-ws.sh" && chmod +x /usr/bin/add-ws
+wget -q -O /usr/bin/add-vless "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/add-vless.sh" && chmod +x /usr/bin/add-vless
+wget -q -O /usr/bin/add-tr "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/add-tr.sh" && chmod +x /usr/bin/add-tr
+wget -q -O /usr/bin/del-ws "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/del-ws.sh" && chmod +x /usr/bin/del-ws
+wget -q -O /usr/bin/del-vless "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/del-vless.sh" && chmod +x /usr/bin/del-vless
+wget -q -O /usr/bin/del-tr "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/del-tr.sh" && chmod +x /usr/bin/del-tr
+wget -q -O /usr/bin/cek-ws "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/cek-ws.sh" && chmod +x /usr/bin/cek-ws
+wget -q -O /usr/bin/cek-vless "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/cek-vless.sh" && chmod +x /usr/bin/cek-vless
+wget -q -O /usr/bin/cek-tr "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/cek-tr.sh" && chmod +x /usr/bin/cek-tr
+wget -q -O /usr/bin/renew-ws "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/renew-ws.sh" && chmod +x /usr/bin/renew-ws
+wget -q -O /usr/bin/renew-vless "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/renew-vless.sh" && chmod +x /usr/bin/renew-vless
+wget -q -O /usr/bin/renew-tr "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/renew-tr.sh" && chmod +x /usr/bin/renew-tr
+wget -q -O /usr/bin/trial-ws "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/trial-ws.sh" && chmod +x /usr/bin/trial-ws
+wget -q -O /usr/bin/trial-vless "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/trial-vless.sh" && chmod +x /usr/bin/trial-vless
+wget -q -O /usr/bin/trial-tr "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/trial-tr.sh" && chmod +x /usr/bin/trial-tr
+wget -q -O /usr/bin/port-ws "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/port-ws.sh" && chmod +x /usr/bin/port-ws
+wget -q -O /usr/bin/port-vless "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/port-vless.sh" && chmod +x /usr/bin/port-vless
+wget -q -O /usr/bin/port-tr "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/port-tr.sh" && chmod +x /usr/bin/port-tr
 
-wget -q -O /usr/bin/renewcert "https://raw.githubusercontent.com/scvps/scriptvps/main/xray/cert.sh" && chmod +x /usr/bin/renewcert
+wget -q -O /usr/bin/renewcert "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/xray/cert.sh" && chmod +x /usr/bin/renewcert
 #===baru===
-wget -q -O /usr/bin/add-trgo "https://raw.githubusercontent.com/scvps/scriptvps/main/trojan/add-trgo.sh" && chmod +x /usr/bin/add-trgo
-wget -q -O /usr/bin/renew-trgo "https://raw.githubusercontent.com/scvps/scriptvps/main/trojan/renew-trgo.sh" && chmod +x /usr/bin/renew-trgo
-wget -q -O /usr/bin/cek-trgo "https://raw.githubusercontent.com/scvps/scriptvps/main/trojan/cek-trgo.sh" && chmod +x /usr/bin/cek-trgo
-wget -q -O /usr/bin/del-trgo "https://raw.githubusercontent.com/scvps/scriptvps/main/trojan/del-trgo.sh" && chmod +x /usr/bin/del-trgo
-wget -q -O /usr/bin/trial-trgo "https://raw.githubusercontent.com/scvps/scriptvps/main/trojan/trial-trgo.sh" && chmod +x /usr/bin/trial-trgo
-wget -q -O /usr/bin/port-trgo "https://raw.githubusercontent.com/scvps/scriptvps/main/trojan/port-trgo.sh" && chmod +x /usr/bin/port-trgo
+wget -q -O /usr/bin/add-trgo "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/trojan/add-trgo.sh" && chmod +x /usr/bin/add-trgo
+wget -q -O /usr/bin/renew-trgo "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/trojan/renew-trgo.sh" && chmod +x /usr/bin/renew-trgo
+wget -q -O /usr/bin/cek-trgo "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/trojan/cek-trgo.sh" && chmod +x /usr/bin/cek-trgo
+wget -q -O /usr/bin/del-trgo "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/trojan/del-trgo.sh" && chmod +x /usr/bin/del-trgo
+wget -q -O /usr/bin/trial-trgo "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/trojan/trial-trgo.sh" && chmod +x /usr/bin/trial-trgo
+wget -q -O /usr/bin/port-trgo "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/trojan/port-trgo.sh" && chmod +x /usr/bin/port-trgo
 
-wget -q -O /usr/bin/v2ray-menu "https://raw.githubusercontent.com/scvps/scriptvps/main/menu_all/v2ray-menu.sh" && chmod +x /usr/bin/v2ray-menu
-wget -q -O /usr/bin/trojan-menu "https://raw.githubusercontent.com/scvps/scriptvps/main/menu_all/trojan-menu.sh" && chmod +x /usr/bin/trojan-menu
+wget -q -O /usr/bin/v2ray-menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/menu_all/v2ray-menu.sh" && chmod +x /usr/bin/v2ray-menu
+wget -q -O /usr/bin/trojan-menu "https://raw.githubusercontent.com/ahmednajmudeen/tetbot/main/menu_all/trojan-menu.sh" && chmod +x /usr/bin/trojan-menu
 
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
