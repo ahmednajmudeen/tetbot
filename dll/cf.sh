@@ -11,9 +11,9 @@ red() { echo -e "\\033[31;1m${*}\\033[0m"; }
 
 source /root/scdomain
 SUB_DOMAIN=$peler
-DOMAIN=aww.com
-CF_ID=nandorz@gmail.com
-CF_KEY=0bf3a3094ea9199e9c2cf90714425191
+DOMAIN=dexildeen.xyz
+CF_ID=ahmed.najmudeen@gmail.com
+CF_KEY=9839977173f0c3343dfe35a614771ca5
 set -euo pipefail
 IP=$(curl -sS ifconfig.me);
 echo "Updating DNS for ${SUB_DOMAIN}..."
