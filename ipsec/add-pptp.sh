@@ -8,7 +8,7 @@ green='\e[0;32m'
 NC='\e[0m'
 green() { echo -e "\\033[32;1m${*}\\033[0m"; }
 red() { echo -e "\\033[31;1m${*}\\033[0m"; }0
-fi
+
 
 clear
 source /var/lib/scrz-prem/ipvps.conf
